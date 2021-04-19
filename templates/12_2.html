@@ -1,0 +1,32 @@
+{% extends "12_1.html" %}
+{% block body %}
+<script type="text/javascript">
+var intervalID = setInterval(update_values,200);
+
+  function update_values() {
+        $.getJSON($SCRIPT_ROOT + '/_stuff',
+
+      function(data) {
+        $('#result').text(data.result);
+        console.log(data)
+      });
+
+    };
+
+
+
+</script>
+<body onload="update_values();">
+<h1>Dynamic Update</h1>
+<p>
+    <span id="result">?</span>
+<script>
+document.getElementById("result").innerHTML;
+</script>
+	<center>
+            <br/><br/>
+            <h3>Web Streaming</h3>
+            <img src="{{ url_for('video') }}">
+    </center>
+	</body>
+{% endblock %}
