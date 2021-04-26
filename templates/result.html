@@ -1,0 +1,11 @@
+{% extends '12_1.html' %}
+{% block body %}
+<form method="POST" action="{{url_for('pay')}}">
+                <ul class="list-group mb-3" id="list">
+<!--                    pay가 폼으로 가져온값-->
+                    <li>{{pay.total}}</li>
+
+                </ul>
+                <input type="submit" value="결제">
+            </form>
+{% endblock %}
