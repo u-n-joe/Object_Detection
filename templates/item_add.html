@@ -1,4 +1,4 @@
-{% extends '12_1.html' %}
+{% extends 'main_video.html' %}
 {% block body %}
 
 <div class="container py-3">
@@ -64,7 +64,7 @@
             <div class="col-lg-12">
                 <div style="text-align:right">
                     <h4  class="label label-default">
-                        <label for="total">"total_price :"</label>
+                        <label for="total">total_price : </label>
                         <input type="number" id="total" name="total" readonly />
 <!--                        <div id="to">원해요</div>-->
                     </h4>
@@ -81,10 +81,11 @@
 
 <script>
 $(function(){
-$("#total").val({{data.price}})
+$("#total").val({{data.total}})
 
 var i = 0
     $("input[name=add]").click(function(){
+        var sum = $("#total").val()
         var idx= $("input[name=add]").index(this);
         console.log(idx)
 <!--        $('#item').find("input[type=text]").each(function(index, item){-->
@@ -93,10 +94,12 @@ var i = 0
     var fruit =$("h4[name=fruit]").eq(idx).text()
     var total= cnt*price
     $("#mytable>tbody").append("<tr><th class='label label-default'>"+i+++"</th><td>"+fruit+"</td><td>"+cnt+"</td><td>"+total+"</td></tr>");
-    $("#total").val({{data.price}}+total)
+    $("#total").val(parseInt(sum)+parseInt(total))
 <!--    console.log(price*cnt)-->
     });
 });
+
+console.log({{data.total}})
 
 
 

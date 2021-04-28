@@ -39,7 +39,7 @@ def price(labels):
     list = labels
 
     for label in list:
-        print(label)
+        # print(label)
 
         for i in range(datas.shape[0]):
             try:
@@ -79,20 +79,21 @@ cam = False
 
 @app.route('/pay', methods = ['GET',"POST"])
 def pay():
+    global cam
+    cam = True
     if request.method == "POST":
         result = request.form
-        return render_template("result.html",pay = result)
+        return render_template("item_pay.html",pay = result)
 @app.route('/add', methods= ["GET", "POST"])
 def add():
     global cam
     cam=True
-    data={}
     if request.method == "POST":
         data = request.form
-        return render_template("add.html", datas= datas, data=data)
+        return render_template("item_add.html", datas=datas, data=data)
 @app.route('/')
 def index():
-    return render_template('12_2.html', form=MainForm())
+    return render_template('main_home.html')
 
 @app.route('/main')
 def redirect_main():
@@ -282,8 +283,8 @@ if __name__ == '__main__':
     parser.add_argument('--name', default='exp', help='save results to project/name')
     parser.add_argument('--exist-ok', action='store_true', help='existing project/name ok, do not increment')
     opt = parser.parse_args()
-    print(opt)
-    check_requirements()
+    # print(opt)
+    # check_requirements()
 
     with torch.no_grad():
         if opt.update:  # update all models (to fix SourceChangeWarning)
@@ -294,5 +295,4 @@ if __name__ == '__main__':
             app.run(debug=True, port='8080')
 
 def amount(label , num):
-
     return

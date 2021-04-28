@@ -1,4 +1,4 @@
-{% extends '12_1.html' %}
+{% extends 'main_video.html' %}
 {% block body %}
 <form method="POST" action="{{url_for('pay')}}">
                 <ul class="list-group mb-3" id="list">
@@ -8,4 +8,8 @@
                 </ul>
                 <input type="submit" value="결제">
             </form>
+<script>
+    console.log({{pay.total}})
+    console.log(1)
+</script>
 {% endblock %}
